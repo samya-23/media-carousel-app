@@ -1,0 +1,27 @@
+.capability-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.capability-card:hover {
+  transform: translateY(-5px);
+}
+
+.capability-card .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.capability-card h3 {
+  color: #1f3c88;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.capability-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
