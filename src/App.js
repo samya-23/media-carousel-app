@@ -1,9 +1,17 @@
-// src/App.js
 import React from 'react';
 import './App.css';
 import MediaCarousel from './components/MediaCarousel';
 import CapabilityCard from './components/CapabilityCard';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import VisitorForm from './components/VisitorForm';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer
+} from 'recharts';
 
 function App() {
   const mediaItems = [
@@ -69,8 +77,10 @@ function App() {
     <div className="App">
       <nav className="navbar">
         <a href="#hero">Home</a>
+        <a href="#form">Form</a> {/* ✅ Added form link */}
         <a href="#capabilities">Capabilities</a>
         <a href="#analytics">Analytics</a>
+        
         <a href="#contact">Contact</a>
       </nav>
 
@@ -80,6 +90,11 @@ function App() {
       </div>
 
       <MediaCarousel mediaItems={mediaItems} />
+
+      {/* ✅ Wrapped VisitorForm with an anchor id */}
+      <div id="form">
+        <VisitorForm />
+      </div>
 
       <div id="capabilities" className="capabilities">
         {capabilities.map((cap, idx) => (
