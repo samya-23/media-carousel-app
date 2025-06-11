@@ -139,11 +139,26 @@ body {
 }
 
 @media (max-width: 768px) {
+  .App {
+    padding: 1rem 0.5rem;
+  }
+
   .hero h1 {
     font-size: 2rem;
   }
 
   .hero p {
     font-size: 1rem;
+  }
+
+  .visitor-form input,
+  .visitor-form button {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .download-section p {
+    font-size: 0.95rem;
   }
 }
