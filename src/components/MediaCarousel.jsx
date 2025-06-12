@@ -24,34 +24,51 @@ const MediaCarousel = ({ mediaItems }) => (
       loop
       grabCursor
       slidesPerView={1}
+      touchRatio={1.2}
+      threshold={10}
     >
       {mediaItems.map((item, idx) => (
         <SwiperSlide key={idx}>
           {item.type === 'image' && (
-            <img src={item.src} alt="" className="media-item" />
+            <>
+              <img
+                src={item.src}
+                alt={item.alt || 'media image'}
+                className="media-item"
+                loading="lazy"
+              />
+              {item.caption && <p className="slide-caption">{item.caption}</p>}
+            </>
           )}
 
           {item.type === 'video' && (
-            <video
-              src={item.src}
-              muted
-              autoPlay
-              loop
-              playsInline
-              className="media-item"
-            />
+            <>
+              <video
+                src={item.src}
+                muted
+                autoPlay
+                loop
+                playsInline
+                controls={item.controls || false}
+                className="media-item"
+              />
+              {item.caption && <p className="slide-caption">{item.caption}</p>}
+            </>
           )}
 
           {item.type === 'iframe' && (
-            <div className="iframe-wrapper">
-              <iframe
-                src={`${item.src}?rel=0&modestbranding=1`}
-                title={`YouTube Video ${idx}`}
-                className="iframe-item"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <>
+              <div className="iframe-wrapper">
+                <iframe
+                  src={`${item.src}?rel=0&modestbranding=1`}
+                  title={`YouTube Video ${idx}`}
+                  className="iframe-item"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              {item.caption && <p className="slide-caption">{item.caption}</p>}
+            </>
           )}
 
           {item.type === 'custom' && (

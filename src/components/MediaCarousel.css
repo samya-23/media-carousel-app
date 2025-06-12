@@ -125,3 +125,16 @@
     height: 28px;
   }
 }
+/* ===== Slide Caption Styling ===== */
+.slide-caption {
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
