@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './VisitorForm.css';
-
+ 
 const VisitorForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -11,48 +11,48 @@ const VisitorForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-
+ 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg('');
-
+ 
     // Basic client-side validation
     const nameRegex = /^[^\d]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
-
+ 
     if (!nameRegex.test(formData.name)) {
       setErrorMsg('Name must not contain numbers.');
       setLoading(false);
       return;
     }
-
+ 
     if (!emailRegex.test(formData.email)) {
       setErrorMsg('Please enter a valid email address.');
       setLoading(false);
       return;
     }
-
+ 
     if (!phoneRegex.test(formData.phone)) {
       setErrorMsg('Phone number must be exactly 10 digits.');
       setLoading(false);
       return;
     }
-
+ 
     try {
-      const res = await fetch('https://your-ngrok-url.com/api/submit-visitor', {
+      const res = await fetch('https://react-backend-9cnn.onrender.com/api/submit-visitor', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
+ 
       const data = await res.json();
-
+ 
       if (data.success) {
         setFormSubmitted(true);
         localStorage.setItem('visitorFormSubmitted', 'true');
@@ -63,10 +63,10 @@ const VisitorForm = () => {
       console.error('Error:', err);
       setErrorMsg('Server error. Please try again later.');
     }
-
+ 
     setLoading(false);
   };
-
+ 
   return (
     <motion.div
       className="visitor-form-section"
@@ -89,7 +89,7 @@ const VisitorForm = () => {
           <div className="download-section">
             <p>Thank you! You can now download the PDF:</p>
             <a
-              href="https://your-ngrok-url.com/api/download-pdf"
+              href="https://react-backend-9cnn.onrender.com/api/download-pdf"
               target="_blank"
               rel="noreferrer"
             >
@@ -101,5 +101,5 @@ const VisitorForm = () => {
     </motion.div>
   );
 };
-
+ 
 export default VisitorForm;
