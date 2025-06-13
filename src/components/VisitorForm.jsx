@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './VisitorForm.css';
 
@@ -12,6 +12,13 @@ const VisitorForm = () => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
+  useEffect(() => {
+    const saved = localStorage.getItem('visitorFormSubmitted');
+    if (saved === 'true') {
+      setFormSubmitted(true);
+    }
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value.trim() });
   };
@@ -21,7 +28,6 @@ const VisitorForm = () => {
     setLoading(true);
     setErrorMsg('');
 
-    // Basic client-side validation
     const nameRegex = /^[^\d]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
@@ -45,7 +51,7 @@ const VisitorForm = () => {
     }
 
     try {
-      const res = await fetch('https://react-backend-9cnn.onrender.com/api/messages', {
+      const res = await fetch('http://localhost:5000/api/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -65,6 +71,13 @@ const VisitorForm = () => {
     }
 
     setLoading(false);
+  };
+
+  const handleReset = () => {
+    setFormSubmitted(false);
+    localStorage.removeItem('visitorFormSubmitted');
+    setFormData({ name: '', email: '', phone: '' });
+    setErrorMsg('');
   };
 
   return (
@@ -91,12 +104,15 @@ const VisitorForm = () => {
           <div className="download-section">
             <p>Thank you! You can now download the PDF:</p>
             <a
-              href="https://react-backend-9cnn.onrender.com/api/download-pdf"
+              href="http://localhost:5000/api/download-pdf"
               target="_blank"
               rel="noreferrer"
             >
               <button>Download PDF</button>
             </a>
+            <button onClick={handleReset} style={{ marginTop: '1rem' }}>
+              Submit Another Response
+            </button>
           </div>
         )}
       </div>
