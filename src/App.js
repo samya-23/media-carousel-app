@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar'; // ✅ Added
 import MediaCarousel from './components/MediaCarousel';
+import AIChatCarousel from './components/AIChatCarousel';
 import CapabilityCard from './components/CapabilityCard';
 import VisitorForm from './components/VisitorForm';
 import {
@@ -66,14 +68,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* Navbar */}
-      <nav className="navbar">
-        <a href="#hero">Home</a>
-        <a href="#form">Form</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#analytics">Analytics</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <Navbar /> {/* ✅ Replaced the old <nav> */}
 
       {/* Hero Section */}
       <section id="hero" className="hero">
@@ -81,6 +76,11 @@ function App() {
           Experience <span>Codepackers</span>
         </h1>
         <p>Innovative AI-first solutions & platform showcase</p>
+      </section>
+
+      {/* Chat Carousel Section */}
+      <section id="ai-chat" className="ai-chat-section">
+        <AIChatCarousel />
       </section>
 
       {/* Media Carousel Section */}

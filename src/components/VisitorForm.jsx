@@ -51,7 +51,7 @@ const VisitorForm = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/messages', {
+      const res = await fetch('https://backend-8lse.onrender.com/api/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -104,7 +104,7 @@ const VisitorForm = () => {
           <div className="download-section">
             <p>Thank you! You can now download the PDF:</p>
             <a
-              href="http://localhost:5000/api/download-pdf"
+              href="https://backend-8lse.onrender.com/api/download-pdf"
               target="_blank"
               rel="noreferrer"
             >

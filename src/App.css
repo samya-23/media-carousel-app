@@ -18,35 +18,20 @@ body {
   color: var(--text);
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+/* MAIN CONTENT */
 .App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  padding-top: 80px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   text-align: center;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  background: white;
-  padding: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.navbar a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.navbar a:hover {
-  color: var(--accent);
-}
-
+/* HERO SECTION */
 .hero {
   animation: fadeInUp 1s ease-out;
   margin-bottom: 3rem;
@@ -70,6 +55,7 @@ body {
   margin: 0 auto;
 }
 
+/* CAPABILITIES SECTION */
 .capabilities {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -82,7 +68,7 @@ body {
   background: white;
   padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease;
 }
 
@@ -106,27 +92,21 @@ body {
   color: #333;
 }
 
-.analytics-section {
-  margin-top: 4rem;
-  padding: 1rem;
-}
-
-.analytics-section h2 {
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
+/* OTHER SECTIONS */
+.analytics-section,
 .contact-section {
   margin-top: 4rem;
+  padding: 1rem;
   background: #fff;
-  padding: 2rem;
 }
 
+.analytics-section h2,
 .contact-section h2 {
   color: var(--primary);
   margin-bottom: 1rem;
 }
 
+/* ANIMATION */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -138,11 +118,8 @@ body {
   }
 }
 
+/* RESPONSIVENESS */
 @media (max-width: 768px) {
-  .App {
-    padding: 1rem 0.5rem;
-  }
-
   .hero h1 {
     font-size: 2rem;
   }
@@ -151,41 +128,25 @@ body {
     font-size: 1rem;
   }
 
-  .visitor-form input,
-  .visitor-form button {
-    width: 100%;
-    font-size: 0.95rem;
-    padding: 12px;
-  }
-
-  .download-section p {
-    font-size: 0.95rem;
-  }
-    .analytics-section p,
-  .contact-section p {
-    font-size: 0.95rem;
-  }
-
   .analytics-section h2,
   .contact-section h2 {
     font-size: 1.5rem;
   }
 
-  .navbar {
-    flex-direction: column;
-    gap: 1rem;
+  .App {
+    padding-top: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
   }
 }
+
 @media (max-width: 480px) {
-  .App {
-    padding: 0.5rem;
+  .hero h1 {
+    font-size: 1.6rem;
   }
 }
 
 button:active {
   transform: scale(0.98);
-}
-
-* {
-  -webkit-tap-highlight-color: transparent;
 }
