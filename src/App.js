@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar'; // ✅ Added
+import Navbar from './components/Navbar';
 import MediaCarousel from './components/MediaCarousel';
 import AIChatCarousel from './components/AIChatCarousel';
 import CapabilityCard from './components/CapabilityCard';
 import VisitorForm from './components/VisitorForm';
+import ChatWidget from './components/ChatWidget'; // ✅ Chatbot added here
+
 import {
   BarChart,
   Bar,
@@ -68,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar /> {/* ✅ Replaced the old <nav> */}
+      <Navbar />
 
       {/* Hero Section */}
       <section id="hero" className="hero">
@@ -129,6 +131,9 @@ function App() {
           Phone: <a href="tel:+919876543210">+91-9876543210</a>
         </p>
       </section>
+
+      {/* ✅ Chatbot Widget (Floating Icon + Window) */}
+      <ChatWidget />
     </div>
   );
 }

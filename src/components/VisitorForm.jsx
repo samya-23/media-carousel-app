@@ -82,40 +82,38 @@ const VisitorForm = () => {
 
   return (
     <motion.div
-      className="visitor-form-section"
+      className="visitor-form-container"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.3 }}
     >
       <h2>Get Access to Our PDF</h2>
-      <div className="visitor-form-container">
-        {!formSubmitted ? (
-          <form onSubmit={handleSubmit} className="visitor-form">
-            <input type="text" name="name" placeholder="Your Name" onChange={handleChange} required />
-            <input type="email" name="email" placeholder="Your Email" onChange={handleChange} required />
-            <input type="tel" name="phone" placeholder="Your Phone Number" onChange={handleChange} required />
-            <button type="submit" disabled={loading}>
-              {loading ? 'Submitting...' : 'Submit'}
-            </button>
-            {errorMsg && <p className="error">{errorMsg}</p>}
-          </form>
-        ) : (
-          <div className="download-section">
-            <p>Thank you! You can now download the PDF:</p>
-            <a
-              href="https://backend-8lse.onrender.com/api/download-pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button>Download PDF</button>
-            </a>
-            <button onClick={handleReset} style={{ marginTop: '1rem' }}>
-              Submit Another Response
-            </button>
-          </div>
-        )}
-      </div>
+      {!formSubmitted ? (
+        <form onSubmit={handleSubmit} className="visitor-form">
+          <input type="text" name="name" placeholder="Your Name" onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Your Email" onChange={handleChange} required />
+          <input type="tel" name="phone" placeholder="Your Phone Number" onChange={handleChange} required />
+          <button type="submit" disabled={loading}>
+            {loading ? 'Submitting...' : 'Submit'}
+          </button>
+          {errorMsg && <p className="error">{errorMsg}</p>}
+        </form>
+      ) : (
+        <div className="download-section">
+          <p>Thank you! You can now download the PDF:</p>
+          <a
+            href="https://backend-8lse.onrender.com/api/download-pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button>Download PDF</button>
+          </a>
+          <button onClick={handleReset} style={{ marginTop: '1rem' }}>
+            Submit Another Response
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 };
