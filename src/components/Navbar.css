@@ -109,3 +109,13 @@ body {
     display: flex;
   }
 }
+/*new added*/
+@media (max-width: 768px) {
+  .navbar-logo {
+    font-size: 1.1rem;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
