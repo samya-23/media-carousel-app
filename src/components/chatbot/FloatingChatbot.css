@@ -120,15 +120,14 @@
   }
 }
 
-/* Tooltip */
 .chatbot-tooltip-wrapper {
   position: fixed;
   bottom: 24px;
   right: 24px;
+  z-index: 1002;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1002;
 }
 
 .chatbot-tooltip {
@@ -150,6 +149,7 @@
   transform: translateY(0);
 }
 
+
 /* Responsive */
 @media (max-width: 500px) {
   .chatbot-popup {
@@ -164,4 +164,24 @@
     padding: 14px;
   }
 }
+.chat-options {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 
+.option-button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.option-button:hover {
+  background: #4338ca;
+}

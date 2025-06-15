@@ -1,11 +1,10 @@
-import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import MediaCarousel from './components/MediaCarousel';
-import AIChatCarousel from './components/AIChatCarousel';
-import CapabilityCard from './components/CapabilityCard';
-import VisitorForm from './components/VisitorForm';
-import ChatWidget from './components/ChatWidget';
+import FloatingChatbot from './components/chatbot/FloatingChatbot';
+import Navbar from './components/Navbar/Navbar';
+import MediaCarousel from './components/MediaCarousel/MediaCarousel';
+import AIChatCarousel from './components/AIChatCarousel/AIChatCarousel';
+import CapabilityCard from './components/CapabilityCard/CapabilityCard';
+import VisitorForm from './components/VisitorForm/VisitorForm';
 
 import {
   BarChart,
@@ -98,7 +97,8 @@ function App() {
         <p>Phone: <a href="tel:+919876543210">+91-9876543210</a></p>
       </section>
 
-      <ChatWidget />
+      {/* Floating chat button (opens chat window) */}
+      <FloatingChatbot />
     </div>
   );
 }
