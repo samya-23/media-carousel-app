@@ -23,7 +23,6 @@ body {
   box-sizing: border-box;
 }
 
-/* MAIN CONTENT */
 .App {
   padding-top: 80px;
   padding-left: 1rem;
@@ -55,7 +54,41 @@ body {
   margin: 0 auto;
 }
 
-/* CAPABILITIES SECTION */
+.ai-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ai-form-left,
+.ai-form-right {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .ai-form-wrapper {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .ai-form-left,
+  .ai-form-right {
+    width: 50%;
+  }
+}
+
+
+/* MEDIA CAROUSEL */
+#media {
+  margin-bottom: 3rem;
+}
+
+/* CAPABILITIES */
 .capabilities {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -92,12 +125,14 @@ body {
   color: #333;
 }
 
-/* OTHER SECTIONS */
+/* ANALYTICS + CONTACT */
 .analytics-section,
 .contact-section {
   margin-top: 4rem;
   padding: 1rem;
   background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .analytics-section h2,
@@ -135,9 +170,11 @@ body {
 
   .App {
     padding-top: 60px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    text-align: center;
+  }
+
+  .ai-form-wrapper {
+    padding: 2rem 1rem;
+    gap: 1rem; /* tighter on mobile */
   }
 }
 

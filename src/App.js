@@ -5,7 +5,7 @@ import MediaCarousel from './components/MediaCarousel';
 import AIChatCarousel from './components/AIChatCarousel';
 import CapabilityCard from './components/CapabilityCard';
 import VisitorForm from './components/VisitorForm';
-import ChatWidget from './components/ChatWidget'; // ✅ Chatbot added here
+import ChatWidget from './components/ChatWidget';
 
 import {
   BarChart,
@@ -29,36 +29,12 @@ function App() {
   ];
 
   const capabilities = [
-    {
-      title: 'AI Conversational Agents',
-      description: 'Designing human-like AI chatbots and voice assistants for seamless user interactions.',
-      icon: '🧠'
-    },
-    {
-      title: 'Web & Mobile Apps',
-      description: 'Building cross-platform applications with modern UI/UX and scalable backend.',
-      icon: '📱'
-    },
-    {
-      title: 'Database Management Systems',
-      description: 'Solutions for Task, Health, HR, and Customer Relations management.',
-      icon: '🗄️'
-    },
-    {
-      title: 'Voice-first & AI Apps',
-      description: 'Building next-gen voice-command powered apps integrated with smart AI.',
-      icon: '🎙️'
-    },
-    {
-      title: 'Systems Integration',
-      description: 'Connecting tools, platforms, and databases into a unified smart ecosystem.',
-      icon: '🔗'
-    },
-    {
-      title: 'Data Analytics',
-      description: 'Visualizing data and extracting insights using dashboards and AI-driven analysis.',
-      icon: '📊'
-    }
+    { title: 'AI Conversational Agents', description: 'Designing human-like AI chatbots and voice assistants for seamless user interactions.', icon: '🧠' },
+    { title: 'Web & Mobile Apps', description: 'Building cross-platform applications with modern UI/UX and scalable backend.', icon: '📱' },
+    { title: 'Database Management Systems', description: 'Solutions for Task, Health, HR, and Customer Relations management.', icon: '🗄️' },
+    { title: 'Voice-first & AI Apps', description: 'Building next-gen voice-command powered apps integrated with smart AI.', icon: '🎙️' },
+    { title: 'Systems Integration', description: 'Connecting tools, platforms, and databases into a unified smart ecosystem.', icon: '🔗' },
+    { title: 'Data Analytics', description: 'Visualizing data and extracting insights using dashboards and AI-driven analysis.', icon: '📊' }
   ];
 
   const analyticsData = [
@@ -72,7 +48,6 @@ function App() {
     <div className="App">
       <Navbar />
 
-      {/* Hero Section */}
       <section id="hero" className="hero">
         <h1>
           Experience <span>Codepackers</span>
@@ -80,22 +55,19 @@ function App() {
         <p>Innovative AI-first solutions & platform showcase</p>
       </section>
 
-      {/* Chat Carousel Section */}
-      <section id="ai-chat" className="ai-chat-section">
-        <AIChatCarousel />
+      <section id="ai-form" className="ai-form-wrapper">
+        <div className="ai-form-left">
+          <AIChatCarousel />
+        </div>
+        <div className="ai-form-right">
+          <VisitorForm />
+        </div>
       </section>
 
-      {/* Media Carousel Section */}
       <section id="media">
         <MediaCarousel mediaItems={mediaItems} />
       </section>
 
-      {/* Visitor Form Section */}
-      <section id="form">
-        <VisitorForm />
-      </section>
-
-      {/* Capabilities Section */}
       <section id="capabilities" className="capabilities">
         {capabilities.map((cap, idx) => (
           <CapabilityCard
@@ -107,7 +79,6 @@ function App() {
         ))}
       </section>
 
-      {/* Analytics Section */}
       <section id="analytics" className="analytics-section">
         <h2>Analytics Overview</h2>
         <ResponsiveContainer width="100%" height={300}>
@@ -121,18 +92,12 @@ function App() {
         </ResponsiveContainer>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className="contact-section">
         <h2>Contact Us</h2>
-        <p>
-          Email: <a href="mailto:hello@codepackers.com">hello@codepackers.com</a>
-        </p>
-        <p>
-          Phone: <a href="tel:+919876543210">+91-9876543210</a>
-        </p>
+        <p>Email: <a href="mailto:hello@codepackers.com">hello@codepackers.com</a></p>
+        <p>Phone: <a href="tel:+919876543210">+91-9876543210</a></p>
       </section>
 
-      {/* ✅ Chatbot Widget (Floating Icon + Window) */}
       <ChatWidget />
     </div>
   );

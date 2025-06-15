@@ -109,7 +109,7 @@ const VisitorForm = () => {
           >
             <button>Download PDF</button>
           </a>
-          <button onClick={handleReset} style={{ marginTop: '1rem' }}>
+          <button onClick={handleReset}>
             Submit Another Response
           </button>
         </div>
@@ -119,3 +119,4 @@ const VisitorForm = () => {
 };
 
 export default VisitorForm;
+
