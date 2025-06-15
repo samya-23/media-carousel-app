@@ -192,3 +192,20 @@
     padding: 6px;
   }
 }
+/* Add to both files to keep styles consistent */
+.option-button, .bot-options button {
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 500;
+  margin: 4px 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.option-button:hover, .bot-options button:hover {
+  background: #3730a3;
+}
+

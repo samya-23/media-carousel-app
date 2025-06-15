@@ -1,4 +1,6 @@
 import './App.css';
+import CapabilityModal from './components/CapabilityCard/CapabilityModal';
+import { useState } from 'react';
 import FloatingChatbot from './components/chatbot/FloatingChatbot';
 import Navbar from './components/Navbar/Navbar';
 import MediaCarousel from './components/MediaCarousel/MediaCarousel';
@@ -17,6 +19,19 @@ import {
 } from 'recharts';
 
 function App() {
+  const [selectedCap, setSelectedCap] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (cap) => {
+    setSelectedCap(cap);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCap(null);
+  };
+
   const mediaItems = [
     { type: 'image', src: '/assets/image0.jpg' },
     { type: 'video', src: '/assets/demo1_fixed.mp4' },
@@ -67,16 +82,27 @@ function App() {
         <MediaCarousel mediaItems={mediaItems} />
       </section>
 
-      <section id="capabilities" className="capabilities">
-        {capabilities.map((cap, idx) => (
-          <CapabilityCard
-            key={idx}
-            title={cap.title}
-            description={cap.description}
-            icon={cap.icon}
-          />
-        ))}
+      <section id="capabilities" className="capabilities-section">
+        <h2>Codepackers Software Solutions</h2>
+        <div className="capabilities-grid">
+          {capabilities.map((cap, idx) => (
+            <CapabilityCard
+              key={idx}
+              title={cap.title}
+              description={cap.description}
+              icon={cap.icon}
+              onClick={() => openModal(cap)} // enable modal on card click
+            />
+          ))}
+        </div>
       </section>
+
+      {/* Modal section */}
+      <CapabilityModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        capability={selectedCap}
+      />
 
       <section id="analytics" className="analytics-section">
         <h2>Analytics Overview</h2>
@@ -97,7 +123,6 @@ function App() {
         <p>Phone: <a href="tel:+919876543210">+91-9876543210</a></p>
       </section>
 
-      {/* Floating chat button (opens chat window) */}
       <FloatingChatbot />
     </div>
   );

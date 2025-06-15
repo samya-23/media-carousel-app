@@ -57,6 +57,11 @@ const VisitorForm = () => {
         body: JSON.stringify(formData),
       });
 
+      if (!res.ok) {
+        const msg = await res.text();
+        throw new Error(msg || 'API failed');
+      }
+
       const data = await res.json();
 
       if (data.success) {
@@ -66,8 +71,10 @@ const VisitorForm = () => {
         setErrorMsg('Submission failed. Please try again.');
       }
     } catch (err) {
-      console.error('Error:', err);
-      setErrorMsg('Server error. Please try again later.');
+      console.warn('Backend not reachable. Using fallback.', err);
+      setErrorMsg('⚠️ Not able to connect to backend. Showing dummy form success.');
+      setFormSubmitted(true);
+      localStorage.setItem('visitorFormSubmitted', 'true');
     }
 
     setLoading(false);
@@ -91,9 +98,27 @@ const VisitorForm = () => {
       <h2>Get Access to Our PDF</h2>
       {!formSubmitted ? (
         <form onSubmit={handleSubmit} className="visitor-form">
-          <input type="text" name="name" placeholder="Your Name" onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Your Email" onChange={handleChange} required />
-          <input type="tel" name="phone" placeholder="Your Phone Number" onChange={handleChange} required />
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Your Phone Number"
+            onChange={handleChange}
+            required
+          />
           <button type="submit" disabled={loading}>
             {loading ? 'Submitting...' : 'Submit'}
           </button>

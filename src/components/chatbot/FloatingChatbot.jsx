@@ -5,8 +5,8 @@ const FloatingChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [isBotTyping, setIsBotTyping] = useState(false);
 
-  // Show welcome message with options when opened
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
@@ -23,13 +23,18 @@ const FloatingChatbot = () => {
     if (!text.trim()) return;
 
     const userMessage = { sender: 'user', text };
-    const aiReply = {
-      sender: 'ai',
-      text: `You selected "${text}". This is a sample AI reply.`
-    };
-
-    setMessages(prev => [...prev, userMessage, aiReply]);
+    setMessages(prev => [...prev, userMessage]);
     setInput('');
+    setIsBotTyping(true);
+
+    setTimeout(() => {
+      const aiReply = {
+        sender: 'ai',
+        text: `You selected "${text}". This is a sample AI reply.`
+      };
+      setMessages(prev => [...prev, aiReply]);
+      setIsBotTyping(false);
+    }, 1000);
   };
 
   const handleKeyDown = (e) => {
@@ -60,7 +65,6 @@ const FloatingChatbot = () => {
             {messages.map((msg, idx) => (
               <div key={idx} className={`chat-bubble ${msg.sender}`}>
                 <div>{msg.text}</div>
-                {/* If message has options, show them as buttons */}
                 {msg.options && (
                   <div className="chat-options">
                     {msg.options.map((opt, i) => (
@@ -76,6 +80,14 @@ const FloatingChatbot = () => {
                 )}
               </div>
             ))}
+
+            {isBotTyping && (
+              <div className="chat-bubble ai typing-indicator">
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+            )}
           </div>
 
           <div className="chatbot-input">
