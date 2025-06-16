@@ -87,6 +87,15 @@ const VisitorForm = () => {
     setErrorMsg('');
   };
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = 'https://backend-8lse.onrender.com/api/download-pdf';
+    link.setAttribute('download', 'Codepackers.pdf'); // You can customize the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <motion.div
       className="visitor-form-container"
@@ -127,13 +136,9 @@ const VisitorForm = () => {
       ) : (
         <div className="download-section">
           <p>Thank you! You can now download the PDF:</p>
-          <a
-            href="https://backend-8lse.onrender.com/api/download-pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button>Download PDF</button>
-          </a>
+          <button onClick={handleDownload}>
+            Download PDF
+          </button>
           <button onClick={handleReset}>
             Submit Another Response
           </button>
