@@ -43,12 +43,36 @@ function App() {
   ];
 
   const capabilities = [
-    { title: 'AI Conversational Agents', description: 'Designing human-like AI chatbots and voice assistants for seamless user interactions.', icon: '🧠' },
-    { title: 'Web & Mobile Apps', description: 'Building cross-platform applications with modern UI/UX and scalable backend.', icon: '📱' },
-    { title: 'Database Management Systems', description: 'Solutions for Task, Health, HR, and Customer Relations management.', icon: '🗄️' },
-    { title: 'Voice-first & AI Apps', description: 'Building next-gen voice-command powered apps integrated with smart AI.', icon: '🎙️' },
-    { title: 'Systems Integration', description: 'Connecting tools, platforms, and databases into a unified smart ecosystem.', icon: '🔗' },
-    { title: 'Data Analytics', description: 'Visualizing data and extracting insights using dashboards and AI-driven analysis.', icon: '📊' }
+    {
+      title: 'AI Conversational Agents',
+      description: 'Designing human-like AI chatbots and voice assistants for seamless user interactions.',
+      icon: '🧠'
+    },
+    {
+      title: 'Web & Mobile Apps',
+      description: 'Building cross-platform applications with modern UI/UX and scalable backend.',
+      icon: '📱'
+    },
+    {
+      title: 'Database Management Systems',
+      description: 'Solutions for Task, Health, HR, and Customer Relations management.',
+      icon: '🗄️'
+    },
+    {
+      title: 'Voice-first & AI Apps',
+      description: 'Building next-gen voice-command powered apps integrated with smart AI.',
+      icon: '🎙️'
+    },
+    {
+      title: 'Systems Integration',
+      description: 'Connecting tools, platforms, and databases into a unified smart ecosystem.',
+      icon: '🔗'
+    },
+    {
+      title: 'Data Analytics',
+      description: 'Visualizing data and extracting insights using dashboards and AI-driven analysis.',
+      icon: '📊'
+    }
   ];
 
   const analyticsData = [
@@ -91,13 +115,12 @@ function App() {
               title={cap.title}
               description={cap.description}
               icon={cap.icon}
-              onClick={() => openModal(cap)} // enable modal on card click
+              onClick={() => openModal(cap)}
             />
           ))}
         </div>
       </section>
 
-      {/* Modal section */}
       <CapabilityModal
         isOpen={isModalOpen}
         onClose={closeModal}

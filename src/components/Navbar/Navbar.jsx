@@ -4,37 +4,53 @@ import './Navbar.css';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setMenuOpen(false); // close menu on mobile
+    }
+  };
 
   return (
-    <header className="navbar">
+    <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">Codepackers Software Solutions</div>
+        <div className="navbar-logo" onClick={() => scrollToSection('hero')}>
+          Codepackers Software Solutions
+        </div>
 
-        <nav className="navbar-links">
-          <a href="#capabilities">Capabilities</a>
-          <a href="#analytics">Analytics</a>
-          <a href="#form">Form</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className="navbar-links">
+          <button onClick={() => scrollToSection('hero')}>Home</button>
+          <button onClick={() => scrollToSection('ai-form')}>AI Chat Carousel</button>
+          <button onClick={() => scrollToSection('ai-form')}>Form</button>
+          <button onClick={() => scrollToSection('media')}>Media Carousel</button>
+          <button onClick={() => scrollToSection('capabilities')}>Capabilities</button>
+          <button onClick={() => scrollToSection('analytics')}>Analytics</button>
+          <button onClick={() => scrollToSection('contact')}>Contact</button>
+        </div>
 
-        <div className="navbar-toggle" onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div
+          className="navbar-toggle"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
         </div>
       </div>
 
       {menuOpen && (
-        <div className="mobile-menu">
-          <a href="#capabilities" onClick={closeMenu}>Capabilities</a>
-          <a href="#analytics" onClick={closeMenu}>Analytics</a>
-          <a href="#form" onClick={closeMenu}>Form</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
+        <div className="mobile-menu open">
+          <button onClick={() => scrollToSection('hero')}>Home</button>
+          <button onClick={() => scrollToSection('ai-form')}>AI Chat Carousel</button>
+          <button onClick={() => scrollToSection('ai-form')}>Form</button>
+          <button onClick={() => scrollToSection('media')}>Media Carousel</button>
+          <button onClick={() => scrollToSection('capabilities')}>Capabilities</button>
+          <button onClick={() => scrollToSection('analytics')}>Analytics</button>
+          <button onClick={() => scrollToSection('contact')}>Contact</button>
         </div>
       )}
-    </header>
+    </nav>
   );
 };
 
